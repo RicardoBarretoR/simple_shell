@@ -6,15 +6,15 @@
  */
 char *_getline(FILE *inp)
 {
-        char *sline = NULL;
-        ssize_t readed;
-        size_t ln;
+	char *sline = NULL;
+	ssize_t readed;
+	size_t ln;
 
-        readed = getline(&sline, &ln, inp);
-        if (readed == -1)
-        {
-                free(sline);
-                exit(EXIT_FAILURE);
-        }
-        return (sline);
+	readed = getline(&sline, &ln, inp);
+	if (readed == -1)
+	{
+		free(sline);
+		exit(EXIT_FAILURE);
+	}
+	return (sline);
 }
