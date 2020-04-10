@@ -1,16 +1,5 @@
 #include "simple_shell.h"
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-/**
  * free_list - free the memory
  * @head: the lis for the estruct
  */
@@ -57,18 +46,16 @@ int _strcmp(char *s1, char *s2)
  */
 char *_strcpy(char *dest, char *src)
 {
-        int x, j;
+	int x, j;
 
-        for (x = 0; src[x] != '\0'; x++)
-        {
-        }
-        for (j = 0; j < x; j++)
-        {
-                dest[j] = src[j];
-        }
-        dest[j] = '\0';
+	for (x = 0; src[x] != '\0'; x++)
+	{
+	}
+	for (j = 0; j < x; j++)
+		dest[j] = src[j];
+	dest[j] = '\0';
 
-        return (dest);
+	return (dest);
 
 }
 /**
@@ -79,18 +66,18 @@ char *_strcpy(char *dest, char *src)
  */
 char *_strcat(char *string, char *stradd)
 {
-        int i = 0, j = 0;
+	int i = 0, j = 0;
 
-        while (string[i] != '\0')
+	while (string[i] != '\0')
 		i++;
-        while (stradd[j] != '\0')
-        {
-                string[i] = stradd[j];
-                i++;
-                j++;
-        }
-        string[i] = '\0';
-        return (string);
+	while (stradd[j] != '\0')
+	{
+		string[i] = stradd[j];
+		i++;
+		j++;
+	}
+	string[i] = '\0';
+	return (string);
 }
 /**
  * sp_string - Split a string with strtok function
@@ -100,35 +87,35 @@ char *_strcat(char *string, char *stradd)
  */
 char **sp_string(char *string, char *del)
 {
-        char **tokens;
-        /*char string[] = "Hola como";*/
-        char *scopy = NULL;
-        char *tokcont, *tok;
-        int lentok = 0, i = 0, nwords = 0;
+	char **tokens;
+	/*char string[] = "Hola como";*/
+	char *scopy = NULL;
+	char *tokcont, *tok;
+	int lentok = 0, i = 0, nwords = 0;
 
-        /*copying the original string to scopy*/
-        scopy = strdup(string);
-        /*Conteo de palabras*/
-        tokcont = strtok(scopy, del);
-        while (tokcont != NULL)
-        {
-                nwords++;
-                tokcont = strtok(NULL, del);
-        }
+	/*copying the original string to scopy*/
+	scopy = strdup(string);
+	/*Conteo de palabras*/
+	tokcont = strtok(scopy, del);
+	while (tokcont != NULL)
+	{
+		nwords++;
+		tokcont = strtok(NULL, del);
+	}
 	free(scopy); /*leak # 1*/
-        /*printf("nwords = %d", nwords);*/
-        /*Crear array doble con malloc*/
-        tok = strtok(string, del); /*primer token del string*/
-        tokens = (char **) malloc(sizeof(char *) * (nwords + 1));
-        for (i = 0; i < nwords; i++)
-        {
-                lentok = 0;
-                while (tok[lentok] != '\0') /*longitud del token*/
-                        lentok++;
-                /*crear columnas*/
-                tokens[i] = strdup(tok);;
-                tok = strtok(NULL, del);
-        }
-        tokens[i] = NULL;
-        return (tokens);
+	/*printf("nwords = %d", nwords);*/
+	/*Crear array doble con malloc*/
+	tok = strtok(string, del); /*primer token del string*/
+	tokens = (char **) malloc(sizeof(char *) * (nwords + 1));
+	for (i = 0; i < nwords; i++)
+	{
+		lentok = 0;
+		while (tok[lentok] != '\0') /*longitud del token*/
+			lentok++;
+		/*crear columnas*/
+		tokens[i] = strdup(tok);
+		tok = strtok(NULL, del);
+	}
+	tokens[i] = NULL;
+	return (tokens);
 }
