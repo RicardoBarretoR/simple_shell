@@ -36,5 +36,6 @@ size_t print_list(const list_t *h);
 int linked_listpath(char *path);
 void free_list(list_t *head);
 void free_arraybid(char **array);
+int _putchar(char c);
 
 #endif
