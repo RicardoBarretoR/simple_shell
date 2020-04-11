@@ -11,8 +11,9 @@ char *_getline(FILE *inp)
 	size_t ln;
 
 	readed = getline(&sline, &ln, inp);
-	if (readed == -1)
+	if (readed == EOF)
 	{
+		_putchar('\n');
 		free(sline);
 		exit(EXIT_FAILURE);
 	}
