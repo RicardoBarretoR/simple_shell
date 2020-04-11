@@ -17,5 +17,12 @@ char *_getline(FILE *inp)
 		free(sline);
 		exit(EXIT_FAILURE);
 	}
+	/*Checking errors input*/
+	/*Type enter whitout writing something*/
+	if (_strcmp(sline, "\n") == 0)
+	{
+		free(sline);
+		return (NULL);
+	}
 	return (sline);
 }
