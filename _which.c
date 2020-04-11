@@ -1,6 +1,5 @@
 #include "simple_shell.h"
 
-
 char *_which(char *cmd)
 {
 	struct stat st;
