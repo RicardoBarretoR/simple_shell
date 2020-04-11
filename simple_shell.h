@@ -36,6 +36,7 @@ char *_getenv(const char *name);
 char *_getline(FILE *inp);
 char *_which(char *cmd);
 /*Main program functions*/
+void hsh_loop(int num);
 void prompt(void);
 void child(char **array, char *rline);
 
