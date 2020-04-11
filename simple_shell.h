@@ -35,10 +35,17 @@ char **sp_string(char *string, char *del);
 char *_getenv(const char *name);
 char *_getline(FILE *inp);
 char *_which(char *cmd);
+
+/*_which functions*/
+char *_which(char *cmd);
+char *_which_dir(char *cmd);
+char *_which_cmd(char *cmd);
+int check_dir(char *cmd);
+
 /*Main program functions*/
 void hsh_loop(int num);
 void prompt(void);
-void child(char **array, char *rline);
+void child(char *path, char **array, char *rline);
 
 /*list functions*/
 list_t *add_node(list_t **head, const char *str);

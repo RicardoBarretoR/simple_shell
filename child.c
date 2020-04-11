@@ -5,7 +5,7 @@
  * @rline: line readed from stdin
  * Return: Nothing
  */
-void child(char **array, char *rline)
+void child(char *path, char **array, char *rline)
 {
 	int status, exe, ch;
 	pid_t wt;
@@ -13,8 +13,8 @@ void child(char **array, char *rline)
 	ch = fork();
 	if (ch == 0)
 	{
-		printf("exe %s\n", array[0]);
-		exe = execve(array[0], array, NULL);
+		printf("exe $%s$\n", path);
+		exe = execve(path, array, NULL);
 		if (exe == -1)
 		{
 			free_arraybid(array);

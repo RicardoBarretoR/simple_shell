@@ -2,34 +2,46 @@
 
 void hsh_loop(int num)
 {
-	char *rline = NULL; /* *path*/
+	char *rline = NULL, *path; /* *path*/
 	char **array; /* **dirs */
-	int ff;
+	int ff, flag;
 
 	if (num != 0)
 		prompt(); /*print prompt*/
 	rline = _getline(stdin);
+	if (rline == NULL)
+		return;
 	rline = strtok(rline, "\n"); /*Cleaning the /n*/
 	ff = fflush(stdin); /*Cleaning the buffer*/
+	array = sp_string(rline, " ");
 	if (ff != 0)
 	{
 		perror("Error to flash the buffer");
 		exit(1);
 	}
-	/*path = _getenv("PATH");*/ /*getting the PATH variable*/
-	/*double pointers*/
-	array = sp_string(rline, " ");
-	/*dirs = sp_string(path, ":");*/ /*USE OF PATH*/
+	path = _which(array[0]); /*path ofr execve function*/
+	if (path != NULL)
+	{
+		flag = check_dir(array[0]);
+		printf("path %s\n", path);
+	}
+	else
+	{
+		perror("_which return null\n");
+		return;
+	}
 	if (_strcmp(array[0], "exit") == 0) /*exit of the shell*/
 	{
 		free(rline);
 		free_arraybid(array);
 		exit(EXIT_SUCCESS);
 	}
-	child(array, rline); /*Creates a child process*/
+	child(path, array, rline); /*Creates a child process*/
 	/*Freeing memory*/
 	free(rline);
-	/*free(path);*/
+	/*freeing path*/
+	if (flag == 0) /*0 means allocated memory in path*/
+		free(path);
 	free_arraybid(array); /*freeing array*/
 	/**
 	 *free_arraybid(array);
