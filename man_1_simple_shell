@@ -1,0 +1,31 @@
+.TH man 1 "15 april 2020" "0.32" "simple_shell man page"
+.SH NAME
+.B simple_shell 
+- UNIX command interpreter
+.SH SYNOPSIS
+[command [flags]]
+.SH DESCRIPTION
+The command interpreter simple_shell is a Sub-shell that after of compiled all your files ".c" and then executing, takes keyboard commands and passes them to the operating system to carry out.
+.Lp 
+Its process starts by checking if a file descriptor refers to a terminal, then proceeds to display the prompt ($) while waiting for a command to be entered
+The command is read and stored in a buffer then divided to be returned as an array. The array in its initial position is compared with the exit command.
+.LP
+Then it is evaluated if it is interactive or non-interactive, after this a child process is created with the fork function to execute the input command 
+.Lp
+Use waitpid function to wait for state changes in the child of the calling process and obtein information about of child.
+.SH RETURN VALUE
+Return the exection in standard output of the command typed by the user if the command doesn´t exist menssage error.
+.SH EXAMPLE
+One of the most common uses is with the 
+.LP
+.B $ls
+.LP
+lists all files and directories in the current directory is ls, which is short for list.
+.LP
+.B $ls -l
+.LP
+we will get all the files and directories of the current directory, in long format.
+.SH SEE ALSO
+.I fork, execve, exit, fflush, free, getline, isatty, stat, strtok, wait, waitpid
+.SH AUTHOR
+Diego Gomez (dagomez2530@gmail.com), Ricardo Barreto (richardbarrodriguez@hotmail.com)
