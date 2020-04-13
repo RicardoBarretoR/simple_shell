@@ -16,7 +16,7 @@ void exit_cmd(char **array, char *rline)
 	}
 	if (i == 2)
 	{
-		ex_value = atoi(array[1]);
+		ex_value = _atoi(array[1]);
 		free_arraybid(array);
 		exit(ex_value);
 	}

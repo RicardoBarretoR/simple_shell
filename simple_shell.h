@@ -43,6 +43,9 @@ void _puts(char *str);
 int print_integer(int n);
 int recursion_int(int n, int cont);
 
+/*convert functions*/
+int _atoi(char *s);
+
 /*Error functions*/
 void _which_errors(char *av[], int cont, char **array,char *rline);
 
