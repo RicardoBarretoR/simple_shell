@@ -4,16 +4,18 @@
  * @inp: value of stream
  * Return: a new string with the input
  */
-char *_getline(FILE *inp)
+char *_getline(FILE *inp, int num)
 {
 	char *sline = NULL;
 	ssize_t readed;
 	size_t ln;
 
 	readed = getline(&sline, &ln, inp);
+	/*printf("sline %s\n", sline);*/
 	if (readed == EOF)
 	{
-		_putchar('\n');
+		if (num != 0) /*0 means non interactive mode*/
+			_putchar('\n');
 		free(sline);
 		exit(EXIT_FAILURE);
 	}

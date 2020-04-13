@@ -1,6 +1,6 @@
 #include "simple_shell.h"
 
-void hsh_loop(int num)
+void hsh_loop(int num, int cont,char *av[])
 {
 	char *rline = NULL, *path; /* *path*/
 	char **array; /* **dirs */
@@ -8,7 +8,7 @@ void hsh_loop(int num)
 
 	if (num != 0)
 		prompt(); /*print prompt*/
-	rline = _getline(stdin);
+	rline = _getline(stdin, num);
 	if (rline == NULL)
 		return;
 	rline = strtok(rline, "\n"); /*Cleaning the /n*/
@@ -19,22 +19,26 @@ void hsh_loop(int num)
 		perror("Error to flash the buffer");
 		exit(1);
 	}
+	if (_strcmp(array[0], "exit") == 0) /*exit of the shell*/
+		exit_cmd(array, rline);
+	if (_strcmp(array[0], "env") == 0)
+	{
+		print_env();
+		free(rline);
+		free_arraybid(array);
+		return;
+	}
 	path = _which(array[0]); /*path ofr execve function*/
 	if (path != NULL)
 	{
 		flag = check_dir(array[0]);
-		printf("path %s\n", path);
+		/*printf("path %s\n", path);*/
 	}
 	else
 	{
-		perror("_which return null\n");
+		/*Missing free memory when _which returns null*/
+		_which_errors(av, cont, array, rline);
 		return;
-	}
-	if (_strcmp(array[0], "exit") == 0) /*exit of the shell*/
-	{
-		free(rline);
-		free_arraybid(array);
-		exit(EXIT_SUCCESS);
 	}
 	child(path, array, rline); /*Creates a child process*/
 	/*Freeing memory*/
@@ -43,11 +47,4 @@ void hsh_loop(int num)
 	if (flag == 0) /*0 means allocated memory in path*/
 		free(path);
 	free_arraybid(array); /*freeing array*/
-	/**
-	 *free_arraybid(array);
-	 *free_arraybid(dirs);
-	 *for (i = 0; dirs[i] != NULL; i++)
-	 *free(dirs[i]);
-	 *free(dirs);
-	 */
 }

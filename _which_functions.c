@@ -12,7 +12,6 @@ char *_which_dir(char *cmd)
 	int j = 0;
 
 	pt = _getenv("PATH");
-	printf("pt: %s\n", pt);
 	/*added*/
 	paths = sp_string(pt, ":");
 	j = 0;
@@ -31,17 +30,17 @@ char *_which_dir(char *cmd)
 				free(paths);
 				/*freeing pt*/
 				free(pt);
-				printf("%s", cmd);
-				printf(" FOUND\n");
+				/*printf("%s", cmd);*/
+				/*printf(" FOUND\n");*/
 				return (cmd);
 			}
 			else
 			{
-				printf("NOT FOUND\n");
+				/*printf("NOT FOUND\n");*/
 			}
 		}
 		else
-			printf("NOT F\n");
+			/*printf("NOT F\n");*/
 		/*printf("%s ", s);*/
 		/*freeing paths used*/
 		free(paths[j]);
@@ -65,7 +64,6 @@ char *_which_cmd(char *cmd)
 	int j = 0, lg, lg2;
 
 	pt = _getenv("PATH");
-	printf("pt: %s\n", pt);
 	/*added*/
 	paths = sp_string(pt, ":");
 	j = 0;
@@ -94,13 +92,13 @@ char *_which_cmd(char *cmd)
 			free(paths);
 			/*freeing pt*/
 			free(pt);
-			printf("%s", s);
-			printf(" FOUND\n");
+			/*printf("%s", s);*/
+			/*printf(" FOUND\n");*/
 			return (s);
 		}
 		else
 		{
-			printf("NOT FOUND\n");
+			/*printf("NOT FOUND\n");*/
 		}
 		/*freeing paths used*/
 		free(paths[j]);
