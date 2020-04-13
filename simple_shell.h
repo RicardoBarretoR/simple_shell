@@ -30,11 +30,21 @@ int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *string, char *stradd);
 char **sp_string(char *string, char *del);
+/*Exit functions*/
+void exit_cmd(char **array, char *rline);
 
 /*environment and PATH functions*/
 char *_getenv(const char *name);
-char *_getline(FILE *inp);
+char *_getline(FILE *inp, int num);
 char *_which(char *cmd);
+
+/*print functions*/
+void _puts(char *str);
+int print_integer(int n);
+int recursion_int(int n, int cont);
+
+/*Error functions*/
+void _which_errors(char *av[], int cont, char **array,char *rline);
 
 /*_which functions*/
 char *_which(char *cmd);
@@ -43,8 +53,9 @@ char *_which_cmd(char *cmd);
 int check_dir(char *cmd);
 
 /*Main program functions*/
-void hsh_loop(int num);
+void hsh_loop(int num, int cont, char *av[]);
 void prompt(void);
+void print_env();
 void child(char *path, char **array, char *rline);
 
 /*list functions*/
