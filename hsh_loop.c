@@ -12,7 +12,7 @@ int hsh_loop(int num, int cont,char *av[], int last_st)
 	rline = _getline(stdin, num);
 	if (rline == NULL)
 		return (1);
-	rline = strtok(rline, "\n"); /*Cleaning the /n*/
+	rline = strtok(rline, "\n\t"); /*Cleaning the /n*/
 	ff = fflush(stdin); /*Cleaning the buffer*/
 	array = sp_string(rline, " ");
 	if (ff != 0)
