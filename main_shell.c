@@ -5,17 +5,18 @@
  */
 int main(int ac __attribute__((unused)), char *av[])
 {
-	int num, cont = 0;
+	int num, cont = 0, last_st = 0, last_r;
 	while (1)
 	{
 		cont++;
 		num = isatty(STDIN_FILENO);
 		if (num)
-			hsh_loop(num, cont, av);
+			last_r = hsh_loop(num, cont, av, last_st);
 		else
 		{
-			hsh_loop(num, cont, av);
+			last_r = hsh_loop(num, cont, av, last_st);
 		}
+		last_st = last_r;
 	}
 	return (0);
 }

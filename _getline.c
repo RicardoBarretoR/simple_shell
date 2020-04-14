@@ -17,7 +17,7 @@ char *_getline(FILE *inp, int num)
 		if (num != 0) /*0 means non interactive mode*/
 			_putchar('\n');
 		free(sline);
-		exit(EXIT_FAILURE);
+		exit(50);
 	}
 	/*Checking errors input*/
 	/*Type enter whitout writing something*/
