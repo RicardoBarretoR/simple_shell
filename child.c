@@ -5,15 +5,15 @@
  * @rline: line readed from stdin
  * Return: Nothing
  */
-void child(char *path, char **array, char *rline)
+int child(char *path, char **array, char *rline)
 {
-	int status, exe, ch;
+	int status, exe, ch, val, exit_stat;
 	pid_t wt;
 
 	ch = fork();
 	if (ch == 0)
 	{
-		printf("exe $%s$\n", path);
+		/*printf("exe $%s$\n", path);*/
 		exe = execve(path, array, NULL);
 		if (exe == -1)
 		{
@@ -21,7 +21,7 @@ void child(char *path, char **array, char *rline)
 			free(rline);
 			perror("Error with execve");
 			/*add free dirs too*/
-			exit(1);
+			return (-1);
 		}
 	}
 	else if (ch > 0)
@@ -32,10 +32,17 @@ void child(char *path, char **array, char *rline)
 			perror("Error with wait");
 			exit(1);
 		}
+		val = WIFEXITED(status);
+		if (val)
+		{
+			exit_stat = WEXITSTATUS(status);
+			return (exit_stat);
+		}
 	}
 	else
 	{
 		perror("Error with fork");
 		exit(1);
 	}
+	return (0);
 }

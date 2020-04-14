@@ -31,7 +31,7 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *string, char *stradd);
 char **sp_string(char *string, char *del);
 /*Exit functions*/
-void exit_cmd(char **array, char *rline);
+void exit_cmd(char **array, char *rline, int last_st);
 
 /*environment and PATH functions*/
 char *_getenv(const char *name);
@@ -56,10 +56,10 @@ char *_which_cmd(char *cmd);
 int check_dir(char *cmd);
 
 /*Main program functions*/
-void hsh_loop(int num, int cont, char *av[]);
+int hsh_loop(int num, int cont, char *av[], int last_st);
 void prompt(void);
 void print_env();
-void child(char *path, char **array, char *rline);
+int child(char *path, char **array, char *rline);
 
 /*list functions*/
 list_t *add_node(list_t **head, const char *str);

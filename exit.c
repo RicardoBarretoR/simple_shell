@@ -4,11 +4,12 @@
  * @array: array whit the command
  * Return: Nothing
  */
-void exit_cmd(char **array, char *rline)
+void exit_cmd(char **array, char *rline, int last_st)
 {
 	int i = 0;
 	int ex_value;
 
+	/*printf("exit last_st %d\n", last_st);*/
 	free(rline);
 	while (array[i] != NULL)
 	{
@@ -23,7 +24,7 @@ void exit_cmd(char **array, char *rline)
 	else if (i == 1)
 	{
 		free_arraybid(array);
-		exit(EXIT_SUCCESS);
+		exit(last_st);
 	}
 	else
 	{
