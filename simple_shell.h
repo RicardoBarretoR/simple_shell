@@ -36,6 +36,7 @@ void exit_cmd(char **array, char *rline, int last_st);
 /*environment and PATH functions*/
 char *_getenv(const char *name);
 char *_getline(FILE *inp, int num);
+int check_getline(char *rline);
 char *_which(char *cmd);
 
 /*print functions*/
