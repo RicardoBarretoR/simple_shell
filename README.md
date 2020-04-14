@@ -32,6 +32,17 @@
 | **_putchar** | Own function, writes the character c to stdout |
 | **child** | Function that creates the child process |
 | **prompt** | Function that prints the prompt line |
+| **_atoi** | Convert a string to an integer |
+| **check_dir** | checks if cmd is a command returning 1 or a directory returning 0 |
+| **_which_cmd** | in case of cmd a command checks with function stat if it exists |
+| **_which_dir | in case of cmd a directory checks with function stat if it exists |
+| ** _which** | Function that checks a string |
+| **_which_errors** |  check and prints errors |
+| **_puts** | function that prints a string |
+| **print_integer** | call a recursion function with an iterator |
+| **recursion_int** | print and return amount of digits of the number n |
+| **print_env** | function that prints environ |
+| **free_arraybid** | free a array bidimentional |
 <hr/>
 <h3>Authors</h3>
 
