@@ -4,7 +4,7 @@ int hsh_loop(int num, int cont,char *av[], int last_st)
 {
 	char *rline = NULL, *path; /* *path*/
 	char **array; /* **dirs */
-	int ff, flag;
+	int ff, flag, r;
 
 	/*printf("last_st %d\n", last_st);*/
 	if (num != 0)
@@ -12,7 +12,13 @@ int hsh_loop(int num, int cont,char *av[], int last_st)
 	rline = _getline(stdin, num);
 	if (rline == NULL)
 		return (1);
-	rline = strtok(rline, "\n\t"); /*Cleaning the /n*/
+	rline = strtok(rline, "\n\t"); /*Cleaning the \n\t*/
+	r = check_getline(rline);
+	if (r == 0)
+	{
+		free(rline);
+		return (last_st);
+	}
 	ff = fflush(stdin); /*Cleaning the buffer*/
 	array = sp_string(rline, " ");
 	if (ff != 0)

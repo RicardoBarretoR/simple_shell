@@ -28,3 +28,14 @@ char *_getline(FILE *inp, int num)
 	}
 	return (sline);
 }
+int check_getline(char *rline)
+{
+	int i, valid_char = 0;
+
+	for (i = 0; rline[i] != '\0'; i++)
+	{
+		if (rline[i] != ' ')
+			valid_char = 1;
+	}
+	return (valid_char);
+}
