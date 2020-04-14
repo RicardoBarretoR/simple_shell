@@ -1,31 +1,52 @@
-.TH man 1 "15 april 2020" "0.32" "simple_shell man page"
+.TH man 1 "16 April 2020" "version 1.0" "simple_shell man page"
 .SH NAME
-.B simple_shell 
+.B simple_shell
 - UNIX command interpreter
 .SH SYNOPSIS
-[command [flags]]
+[command [flags] [files]]
 .SH DESCRIPTION
-The command interpreter simple_shell is a Sub-shell that after of compiled all your files ".c" and then executing, takes keyboard commands and passes them to the operating system to carry out.
-.Lp 
-Its process starts by checking if a file descriptor refers to a terminal, then proceeds to display the prompt ($) while waiting for a command to be entered
-The command is read and stored in a buffer then divided to be returned as an array. The array in its initial position is compared with the exit command.
+The command interpreter simple_shell is a shell based on the sh or bash shells. It works in an interactive mode or non interactive mode,
+an interactive mode means read commands from user on a terminal and A non-interactive shell is a shell that can not interact with the user.
+Its most often run from a script or similar. In general starts by checking if a file descriptor refers to a terminal, then simple_shell waits
+to read the line, interprets the command, if the command is valid it will be excuted, otherwise it prints and descriptive error.
+Most of the commands used are located in the environment variable called PATH
+.SH INITIALIZING
+.PP
+First of all, compile all the ".c",  files with gcc -Wextra -werror -Wall -pedantic *.c -o hsh
+then you executes the hsh file, and you have your simple_shell working.
+
+.Lp
 .LP
 Then it is evaluated if it is interactive or non-interactive, after this a child process is created with the fork function to execute the input command 
 .Lp
 Use waitpid function to wait for state changes in the child of the calling process and obtein information about of child.
-.SH RETURN VALUE
-Return the exection in standard output of the command typed by the user if the command doesn´t exist menssage error.
-.SH EXAMPLE
-One of the most common uses is with the 
+.SS Built-in commands
+.TP
+exit [status]
+Command to finished the shell program, if you specified the status it will be the last status of the program. If you do not specified it, the last
+status will be the status of the last process before exit.
+.TP
+env
+Prints the current environment.
+.SH EXAMPLES INTERACTIVE MODE
+.TP
+Show the content of a file text.txt
+.B $ cat text.txt
+.TP
+Show the content of the current directory
+.B $ ls
+.TP
+Usign flags with ls command, -l shows long files and riectories in long format, -a all the directories that start with .
+.B $ ls -l -a
+.SH EXAMPLES NON-INTERACTIVE MODE
+.TP
+Show the content of the current directory
+.B $ echo "ls" | ./hsh
+.TP
+An error example is when you type ls command with a file that does not exist, In the following the error printed is ./hsh: 1: qwerty: not found
+.B $ echo "qwerty" | ./hsh
 .LP
-.B $ls
-.LP
-lists all files and directories in the current directory is ls, which is short for list.
-.LP
-.B $ls -l
-.LP
-we will get all the files and directories of the current directory, in long format.
 .SH SEE ALSO
-.I fork, execve, exit, fflush, free, getline, isatty, stat, strtok, wait, waitpid
+.I sh, fork, execve, exit, fflush, free, getline, isatty, stat, strtok, wait, waitpid
 .SH AUTHOR
 Diego Gomez (dagomez2530@gmail.com), Ricardo Barreto (richardbarrodriguez@hotmail.com)
