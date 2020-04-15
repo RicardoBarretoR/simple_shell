@@ -9,6 +9,7 @@
  */
 void _which_errors(char *av[], int cont, char **array, char *rline)
 {
+	/*No such file directory*/
 	free(rline);
 	_puts(av[0]);
 	_putchar(':');
@@ -20,6 +21,29 @@ void _which_errors(char *av[], int cont, char **array, char *rline)
 	_puts(array[0]);
 	_putchar(':');
 	_puts(" not found");
+	_putchar('\n');
+	free_arraybid(array);
+}
+/**
+ * no_permission - check and prints errors for denied permissions
+ * @av: array of pointers of the main function
+ * @cont: amount of iterations of the loop
+ * @array: array with the command and arguments
+ * @rline: input from the getline
+ * Return: Nothing
+ */
+void no_permission(char *av[], int cont, char **array, char *rline)
+{
+	free(rline);
+	_puts(av[0]);
+	_putchar(':');
+	_putchar(' ');
+	print_integer(cont);
+	_putchar(':');
+	_putchar (' ');
+	_puts(array[0]);
+	_putchar(':');
+	_puts("Permission denied");
 	_putchar('\n');
 	free_arraybid(array);
 }

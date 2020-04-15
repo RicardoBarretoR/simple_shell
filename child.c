@@ -4,9 +4,11 @@
  * @path: correct path to be executed
  * @array: array of arguments
  * @rline: line readed from stdin
+ * @cont: count the number of cycles
+ * @av: arguments form main
  * Return: Nothing
  */
-int child(char *path, char **array, char *rline)
+int child(char *path, char **array, char *rline, int cont, char *av[])
 {
 	int status, exe, ch, val, exit_stat;
 	pid_t wt;
@@ -18,8 +20,8 @@ int child(char *path, char **array, char *rline)
 		if (exe == -1)
 		{
 			free_arraybid(array);
+			_which_errors(av, cont, array, rline);
 			free(rline);
-			perror("Error with execve");
 			/*add free dirs too*/
 			return (-1);
 		}

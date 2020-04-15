@@ -18,7 +18,7 @@ char *_getline(FILE *inp, int num)
 		if (num != 0) /*0 means non interactive mode*/
 			_putchar('\n');
 		free(sline);
-		exit(50);
+		exit(127);
 	}
 	/*Checking errors input*/
 	/*Type enter whitout writing something*/
@@ -28,6 +28,42 @@ char *_getline(FILE *inp, int num)
 		return (NULL);
 	}
 	return (sline);
+}
+/**
+ * cases_command - checks special cases for the main command
+ * @av: arguments from main
+ * @cont: count the number of cycles
+ * @array: string to be checked
+ * @rline: line to free
+ * Return: on succes 0, 1 otherwise
+ */
+int cases_command(char *av[], int cont, char **array, char *rline)
+{
+	char *s[] = {"..", "."};
+	int i, cont_slash = 0, letter = 0;
+
+	/*checking . .. y / like a command*/
+	for (i = 0; array[0][i] != '\0'; i++)
+	{
+		if (array[0][i] == '/')
+			cont_slash++;
+		if (array[0][i] != '/')
+			letter++;
+	}
+	if (cont_slash == 1 && letter == 0)
+	{
+		no_permission(av, cont, array, rline);
+		return (126);
+	}
+	for (i = 0; i < 2; i++)
+	{
+		if (_strcmp(array[0], s[i]) == 0)
+		{
+			no_permission(av, cont, array, rline);
+			return (127);
+		}
+	}
+	return (0);
 }
 /**
  * check_getline - checks the getline input to solve some errors

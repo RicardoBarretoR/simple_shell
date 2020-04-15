@@ -94,7 +94,7 @@ char **sp_string(char *string, char *del)
 	int lentok = 0, i = 0, nwords = 0;
 
 	/*copying the original string to scopy*/
-	scopy = _strdup(string);
+	scopy = strdup(string);
 	/*Conteo de palabras*/
 	tokcont = strtok(scopy, del);
 	while (tokcont != NULL)
@@ -113,7 +113,7 @@ char **sp_string(char *string, char *del)
 		while (tok[lentok] != '\0') /*longitud del token*/
 			lentok++;
 		/*crear columnas*/
-		tokens[i] = _strdup(tok);
+		tokens[i] = strdup(tok);
 		tok = strtok(NULL, del);
 	}
 	tokens[i] = NULL;

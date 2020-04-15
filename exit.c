@@ -11,6 +11,7 @@ void exit_cmd(char **array, char *rline, int last_st)
 	int i = 0;
 	int ex_value;
 
+	last_st = 0;
 	/*printf("exit last_st %d\n", last_st);*/
 	free(rline);
 	while (array[i] != NULL)
