@@ -1,37 +1,20 @@
 #include "simple_shell.h"
-
-int hsh_loop(int num, int cont,char *av[], int last_st)
+/**
+ * hsh_loop - main code of the program
+ * @num: indicates interactive or non-interactive mode
+ * @cont: indicates that the prompt is show
+ * @av: array of argumetns from main function
+ * @last_st: indicates the last status
+ * Return: status of the alst process
+ */
+int hsh_loop(int num, int cont, char *av[], int last_st)
 {
-	char *rline = NULL, *path; /* *path*/
-	char **array; /* **dirs */
-	int ff, flag, r;
+	char *rline = NULL, *path, **array;
+	int ff, flag;
 
-	if (num != 0)
-	{
-		signal(SIGINT, manage_signal);
-		prompt(); /*print prompt*/
-	}
-	rline = _getline(stdin, num);
+	rline = check(num, last_st);
 	if (rline == NULL)
-	{
-		free(rline);
 		return (1);
-	}
-	/*replacing /t b spaces*/
-        rline = replace_function(rline);
-	/*spaces and tab errors with enter*/
-	r = check_getline(rline);
-        if (r == 0)
-        {
-                free(rline);
-                return (last_st);
-        }
-	rline = strtok(rline, "\n\t"); /*Cleaning the \n\t*/
-	if (rline == NULL)
-	{
-		free(rline);
-		return (1);
-	}
 	ff = fflush(stdin); /*Cleaning the buffer*/
 	array = sp_string(rline, " ");
 	if (ff != 0)
@@ -52,20 +35,14 @@ int hsh_loop(int num, int cont,char *av[], int last_st)
 	}
 	path = _which(array[0], num); /*path ofr execve function*/
 	if (path != NULL)
-	{
 		flag = check_dir(array[0]);
-		/*printf("path %s\n", path);*/
-	}
 	else
 	{
-		/*Missing free memory when _which returns null*/
-		_which_errors(av, cont, array, rline);
+		_which_errors(av, cont, array, rline);  /*includes freeing*/
 		return (1);
 	}
 	last_st = child(path, array, rline); /*Creates a child process*/
-	/*Freeing memory*/
-	free(rline);
-	/*freeing path*/
+	free(rline);  /*Freeing memory*/
 	if (flag == 0) /*0 means allocated memory in path*/
 		free(path);
 	free_arraybid(array); /*freeing array*/

@@ -2,6 +2,8 @@
 /**
  * exit_cmd - exits from the program
  * @array: array whit the command
+ * @rline: getline buffer to frees
+ * @last_st: last status to exit
  * Return: Nothing
  */
 void exit_cmd(char **array, char *rline, int last_st)

@@ -50,7 +50,7 @@ int recursion_int(int n, int cont);
 int _atoi(char *s);
 
 /*Error functions*/
-void _which_errors(char *av[], int cont, char **array,char *rline);
+void _which_errors(char *av[], int cont, char **array, char *rline);
 
 /*_which functions*/
 char *_which(char *cmd, int num);
@@ -60,8 +60,9 @@ int check_dir(char *cmd);
 
 /*Main program functions*/
 int hsh_loop(int num, int cont, char *av[], int last_st);
+char *check(int num, int last_st);
 void prompt(void);
-void print_env();
+void print_env(void);
 int child(char *path, char **array, char *rline);
 
 /*list functions*/

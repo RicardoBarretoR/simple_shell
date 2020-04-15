@@ -10,7 +10,7 @@ char *_strdup(const char *str)
 	char *dup, size;
 
 	if (str == NULL)
-		return(NULL);
+		return (NULL);
 
 	for (i = 0; str[i]; i++)
 	{
@@ -24,7 +24,7 @@ char *_strdup(const char *str)
 
 	for (i = 0; i < size; i++)
 		dup[i] = str[i];
-	dup[i] ='\0';
+	dup[i] = '\0';
 
 	return (dup);
 }

@@ -1,9 +1,13 @@
 #include "simple_shell.h"
 /**
  * _which_errors - check and prints errors in _which function
+ * @av: array of pointers of the main function
+ * @cont: amount of iterations of the loop
+ * @array: array with the command and arguments
+ * @rline: input from the getline
  * Return: Nothing
  */
-void _which_errors(char *av[], int cont, char **array,char *rline)
+void _which_errors(char *av[], int cont, char **array, char *rline)
 {
 	free(rline);
 	_puts(av[0]);

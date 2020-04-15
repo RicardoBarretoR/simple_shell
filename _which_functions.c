@@ -12,7 +12,6 @@ char *_which_dir(char *cmd)
 	int j = 0;
 
 	pt = _getenv("PATH");
-	/*added*/
 	paths = sp_string(pt, ":");
 	j = 0;
 	while (paths[j] != NULL)
@@ -21,33 +20,20 @@ char *_which_dir(char *cmd)
 		{
 			if (stat(cmd, &st) == 0)
 			{
-				/*freeing missing values of paths*/
-				while (paths[j] != NULL)
+				while (paths[j] != NULL) /*freeing*/
 				{
 					free(paths[j]);
 					j++;
 				}
 				free(paths);
-				/*freeing pt*/
-				free(pt);
-				/*printf("%s", cmd);*/
-				/*printf(" FOUND\n");*/
+				free(pt); /*freeing pt*/
 				return (cmd);
 			}
-			else
-			{
-				/*printf("NOT FOUND\n");*/
-			}
 		}
-		else
-			/*printf("NOT F\n");*/
-		/*printf("%s ", s);*/
-		/*freeing paths used*/
-		free(paths[j]);
+		free(paths[j]); /*freeing paths used*/
 		j++;
 	}
-	/*freeing in case that the paths does not exist*/
-	free(paths);
+	free(paths); /*freeing in case that the paths does not exist*/
 	free(pt);
 	return (NULL);
 }
@@ -64,7 +50,6 @@ char *_which_cmd(char *cmd)
 	int j = 0, lg, lg2;
 
 	pt = _getenv("PATH");
-	/*added*/
 	paths = sp_string(pt, ":");
 	j = 0;
 	while (paths[j] != NULL)
@@ -75,45 +60,33 @@ char *_which_cmd(char *cmd)
 		lg2 = 0;
 		while (cmd[lg2] != '\0')
 			lg2++;
-		/*Allocating memory for the path*/
-		s = malloc(sizeof(char) * (lg + 2 + lg2));
+		s = malloc(sizeof(char) * (lg + 2 + lg2));/*memory for path*/
 		s = _strcpy(s, paths[j]);
 		s = _strcat(s, "/");
 		s = _strcat(s, cmd);
-		/*printf("%s ", s);*/
 		if (stat(s, &st) == 0)
 		{
-			/*freeing missing values of paths*/
-			while (paths[j] != NULL)
+			while (paths[j] != NULL)  /*freeing*/
 			{
 				free(paths[j]);
 				j++;
 			}
 			free(paths);
-			/*freeing pt*/
-			free(pt);
-			/*printf("%s", s);*/
-			/*printf(" FOUND\n");*/
+			free(pt); /*freeing pt*/
 			return (s);
 		}
-		else
-		{
-			/*printf("NOT FOUND\n");*/
-		}
-		/*freeing paths used*/
-		free(paths[j]);
+		free(paths[j]); /*freeing paths used*/
 		j++;
 		free(s);
 	}
-	/*freeing in case that the paths does not exist*/
-	free(paths);
+	free(paths); /*freeing in case that the paths does not exist*/
 	free(pt);
 	return (NULL);
 }
 /**
  * check_dir - checks if cmd is a command or a directory
  * @cmd: command or directory
- * Returnd: 1 if cmd is a directory, 0 if it's a command
+ * Return: 1 if cmd is a directory, 0 if it's a command
  */
 int check_dir(char *cmd)
 {
