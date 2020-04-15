@@ -78,5 +78,4 @@ void manage_signal(int num_s __attribute__((unused)))
 {
 	_putchar('\n');
 	prompt();
-	return;
 }
