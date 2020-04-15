@@ -70,4 +70,6 @@ int linked_listpath(char *path);
 void free_list(list_t *head);
 void free_arraybid(char **array);
 
+char *_strup(const char *str);
+
 #endif
