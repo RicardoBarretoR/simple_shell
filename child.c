@@ -13,7 +13,6 @@ int child(char *path, char **array, char *rline)
 	ch = fork();
 	if (ch == 0)
 	{
-		/*printf("exe $%s$\n", path);*/
 		exe = execve(path, array, NULL);
 		if (exe == -1)
 		{
