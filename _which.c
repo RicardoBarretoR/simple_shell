@@ -1,6 +1,6 @@
 #include "simple_shell.h"
 
-char *_which(char *cmd)
+char *_which(char *cmd, int num)
 {
 	int flag;
 	char *cmd_exe;
@@ -16,5 +16,7 @@ char *_which(char *cmd)
 		/*command*/
 		cmd_exe = _which_cmd(cmd);
 	}
+	if (cmd_exe != NULL && num == 0)
+		prompt();
 	return (cmd_exe);
 }

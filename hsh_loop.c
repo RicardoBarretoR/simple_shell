@@ -6,18 +6,31 @@ int hsh_loop(int num, int cont,char *av[], int last_st)
 	char **array; /* **dirs */
 	int ff, flag, r;
 
-	/*printf("last_st %d\n", last_st);*/
 	if (num != 0)
+	{
+		signal(SIGINT, manage_signal);
 		prompt(); /*print prompt*/
+	}
 	rline = _getline(stdin, num);
 	if (rline == NULL)
-		return (1);
-	rline = strtok(rline, "\n\t"); /*Cleaning the \n\t*/
-	r = check_getline(rline);
-	if (r == 0)
 	{
 		free(rline);
-		return (last_st);
+		return (1);
+	}
+	/*replacing /t b spaces*/
+        rline = replace_function(rline);
+	/*spaces and tab errors with enter*/
+	r = check_getline(rline);
+        if (r == 0)
+        {
+                free(rline);
+                return (last_st);
+        }
+	rline = strtok(rline, "\n\t"); /*Cleaning the \n\t*/
+	if (rline == NULL)
+	{
+		free(rline);
+		return (1);
 	}
 	ff = fflush(stdin); /*Cleaning the buffer*/
 	array = sp_string(rline, " ");
@@ -37,7 +50,7 @@ int hsh_loop(int num, int cont,char *av[], int last_st)
 		free_arraybid(array);
 		return (0);
 	}
-	path = _which(array[0]); /*path ofr execve function*/
+	path = _which(array[0], num); /*path ofr execve function*/
 	if (path != NULL)
 	{
 		flag = check_dir(array[0]);

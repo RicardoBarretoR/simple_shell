@@ -6,6 +6,7 @@
 int main(int ac __attribute__((unused)), char *av[])
 {
 	int num, cont = 0, last_st = 0, last_r;
+
 	while (1)
 	{
 		cont++;
