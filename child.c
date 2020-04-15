@@ -23,7 +23,7 @@ int child(char *path, char **array, char *rline, int cont, char *av[])
 			_which_errors(av, cont, array, rline);
 			free(rline);
 			/*add free dirs too*/
-			return (-1);
+			exit(1);
 		}
 	}
 	else if (ch > 0)
