@@ -25,6 +25,7 @@ typedef struct list_s
 	unsigned int len;
 	struct list_s *next;
 } list_t;
+int cases_command(char *av[], int cont, char **array, char *rline);
 /*Help functions*/
 int _putchar(char c);
 int _strcmp(char *s1, char *s2);
@@ -38,8 +39,11 @@ void manage_signal(int num_s);
 /*environment and PATH functions*/
 char *_getenv(const char *name);
 char *_getline(FILE *inp, int num);
+
+/*check function for get_line*/
 int check_getline(char *rline);
 char *replace_function(char *str);
+int check(int last_st, char *rline);
 
 /*print functions*/
 void _puts(char *str);
@@ -51,6 +55,7 @@ int _atoi(char *s);
 
 /*Error functions*/
 void _which_errors(char *av[], int cont, char **array, char *rline);
+void no_permission(char *av[], int cont, char **array, char *rline);
 
 /*_which functions*/
 char *_which(char *cmd, int num);
@@ -60,10 +65,9 @@ int check_dir(char *cmd);
 
 /*Main program functions*/
 int hsh_loop(int num, int cont, char *av[], int last_st);
-char *check(int num, int last_st);
 void prompt(void);
 void print_env(void);
-int child(char *path, char **array, char *rline);
+int child(char *path, char **array, char *rline, int cont, char *av[]);
 
 /*list functions*/
 list_t *add_node(list_t **head, const char *str);
