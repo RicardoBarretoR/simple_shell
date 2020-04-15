@@ -28,3 +28,17 @@ char *_strdup(const char *str)
 
 	return (dup);
 }
+/**
+ *_strlen - return the length of a string
+ *@str: pointer an string
+ *Return: i
+ */
+int  _strlen(char *str)
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+	}
+	return (i);
+}

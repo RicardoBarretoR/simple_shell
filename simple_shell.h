@@ -32,6 +32,7 @@ int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *string, char *stradd);
 char **sp_string(char *string, char *del);
+int  _strlen(char *str);
 /*Exit functions*/
 void exit_cmd(char **array, char *rline, int last_st);
 /*signal function*/
