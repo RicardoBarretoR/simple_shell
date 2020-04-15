@@ -14,7 +14,7 @@ int child(char *path, char **array, char *rline)
 	ch = fork();
 	if (ch == 0)
 	{
-		exe = execve(path, array, NULL);
+		exe = execve(path, array, environ);
 		if (exe == -1)
 		{
 			free_arraybid(array);
