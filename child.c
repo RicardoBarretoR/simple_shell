@@ -1,6 +1,7 @@
 #include "simple_shell.h"
 /**
  * child - creates the child process
+ * @path: correct path to be executed
  * @array: array of arguments
  * @rline: line readed from stdin
  * Return: Nothing

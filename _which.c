@@ -1,5 +1,10 @@
 #include "simple_shell.h"
-
+/**
+ * _which - Checks if the command is valid or non-valid
+ * @cmd: command or path to check
+ * @num: indicates the interactive or non-interactive mode
+ * Return: success the path to be executed, NULL otherwvise
+ */
 char *_which(char *cmd, int num)
 {
 	int flag;

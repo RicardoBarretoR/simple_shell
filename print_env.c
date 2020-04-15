@@ -1,11 +1,14 @@
 #include "simple_shell.h"
-
-void print_env()
+/**
+ * print_env - prints the current environment
+ * Return: Nothing
+ */
+void print_env(void)
 {
 	int j = 0, i = 0;
 
-        while (environ[i] != NULL)
-        {
+	while (environ[i] != NULL)
+	{
 		j = 0;
 		while (environ[i][j] != '\0')
 		{
@@ -13,6 +16,6 @@ void print_env()
 			j++;
 		}
 		_putchar('\n');
-                i++;
-        }
+		i++;
+	}
 }

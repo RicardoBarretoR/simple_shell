@@ -2,6 +2,7 @@
 /**
  * _getline - read a new line form terminal
  * @inp: value of stream
+ * @num: indicates the interactive or non-interactive mode
  * Return: a new string with the input
  */
 char *_getline(FILE *inp, int num)
@@ -28,6 +29,11 @@ char *_getline(FILE *inp, int num)
 	}
 	return (sline);
 }
+/**
+ * check_getline - checks the getline input to solve some errors
+ * @rline: string from the getline function
+ * Return: on succes returns 1, otherwise 0
+ */
 int check_getline(char *rline)
 {
 	int i, valid_char = 0;
@@ -42,9 +48,15 @@ int check_getline(char *rline)
 	}
 	return (valid_char);
 }
+/**
+ * replace_function - This function replaces \t by spaces ' '
+ * @str: string to check
+ * Return: the same string with the corrections
+ */
 char *replace_function(char *str)
 {
 	int i = 0;
+
 	while (str[i] != '\0')
 	{
 		if (str[i] == '\t')
@@ -57,6 +69,11 @@ char *replace_function(char *str)
 	}
 	return (str);
 }
+/**
+ * manage_signal - function to manage the signal CTRL + C
+ * @num_s: number for the signal number
+ * Return: Nothing
+ */
 void manage_signal(int num_s __attribute__((unused)))
 {
 	_putchar('\n');
