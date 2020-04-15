@@ -16,6 +16,8 @@ int hsh_loop(int num, int cont, char *av[], int last_st)
 	if (num != 0)
 		prompt(); /*print prompt*/
 	rline = _getline(stdin, num);
+	if (rline == NULL)
+		return (1);
 	get_error = check(last_st, rline);
 	if (get_error != 0)
 		return (get_error);

@@ -6,8 +6,8 @@
  */
 char *_strdup(const char *str)
 {
-	int i;
-	char *dup, size;
+	int i, size;
+	char *dup;
 
 	if (str == NULL)
 		return (NULL);

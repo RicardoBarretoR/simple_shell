@@ -18,7 +18,7 @@ char *_getline(FILE *inp, int num)
 		if (num != 0) /*0 means non interactive mode*/
 			_putchar('\n');
 		free(sline);
-		exit(127);
+		exit(0);  /*was 127*/
 	}
 	/*Checking errors input*/
 	/*Type enter whitout writing something*/
@@ -39,7 +39,7 @@ char *_getline(FILE *inp, int num)
  */
 int cases_command(char *av[], int cont, char **array, char *rline)
 {
-	char *s[] = {"..", "."};
+	/*char *s[] = {"..", "."};*/
 	int i, cont_slash = 0, letter = 0;
 
 	/*checking . .. y / like a command*/
@@ -55,14 +55,15 @@ int cases_command(char *av[], int cont, char **array, char *rline)
 		no_permission(av, cont, array, rline);
 		return (126);
 	}
+	/*
 	for (i = 0; i < 2; i++)
 	{
 		if (_strcmp(array[0], s[i]) == 0)
 		{
 			no_permission(av, cont, array, rline);
-			return (127);
+			return (0);
 		}
-	}
+	}*/
 	return (0);
 }
 /**
@@ -77,7 +78,7 @@ int check_getline(char *rline)
 	/*solving spaces spaces + enter, tab tab + enter   errors*/
 	for (i = 0; rline[i] != '\0'; i++)
 	{
-		if (rline[i] != ' ' && rline[i] != '\n' && rline[i] != '\t')
+		if (rline[i] != ' ' && rline[i] != '\n' && rline[i] != '\t' && rline[i] != '.')
 		{
 			valid_char = 1;
 		}
