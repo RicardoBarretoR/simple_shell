@@ -1,7 +1,7 @@
 #include "simple_shell.h"
 /**
  * main - main function for the shell hsh
- * @ac: number of arguments
+ * @ac: number of arguments input
  * @av: array with the arguments for non-interactive mode
  * Return: 0 on success
  */
