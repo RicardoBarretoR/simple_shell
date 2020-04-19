@@ -42,3 +42,50 @@ int  _strlen(char *str)
 	}
 	return (i);
 }
+/**
+  * _atoi - Convert a string to an integer.
+  * @s: The string to be converted into int
+  * Return: A integer
+  */
+int _atoi(char *s)
+{
+	int min = 1, id_i = 0, i = 0;
+	unsigned int nu_i = 0;
+
+	while (s[i])
+	{
+		if (s[i] == '-')
+			min *= -1;
+
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			id_i = 1;
+			nu_i = (nu_i * 10) + (s[i] - '0');
+			i++;
+		}
+		if (id_i == 1)
+			break;
+
+		i++;
+	}
+
+	nu_i *= min;
+	return (nu_i);
+}
+/**
+ *_isdigit - function that checks for a digit 0 thr
+ough 9
+ *@c: variable of a digit
+ *Return: 1 - 0
+ */
+int _isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
+}
