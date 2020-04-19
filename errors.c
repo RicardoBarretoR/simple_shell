@@ -29,9 +29,6 @@ void print_errors(char **array, char *av[], int cont, int num)
 	{
 		write(STDOUT_FILENO, av[0], lnav);
 		write(STDOUT_FILENO, ": ", 2);
-		print_integer(cont);
-		write(STDOUT_FILENO, ": exit: Illegal number: ", 24);
-		write(STDOUT_FILENO, array[1], lnarray);
 	}
 }
 /**

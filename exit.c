@@ -2,9 +2,9 @@
 /**
  *exit_cmd - function of exits to program
  *@array: array whit the command
- *@line: getline buffer to frees
  *@av: parameter of main
- *@count: count of executes
+ *@line: getline buffer to frees
+ *@cont: count of executes
  *@ret_status: last status to exit
  *Return:status
  */

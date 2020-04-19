@@ -27,7 +27,7 @@ int main(int ac __attribute__((unused)), char *av[])
 		}
 		if (_strcmp(array[0], "exit") == 0)
 			ret_status = exit_cmd(array, av, line, cont, ret_status);
-      		ret_status = child(array, av, cont);
+		ret_status = child(array, av, cont);
 		free(array);
 		array = NULL;
 		fflush(stdin); /*cleaning the buffer*/
