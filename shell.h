@@ -5,6 +5,11 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+/*extern enviroment variable*/
+extern char **environ;
 /*Helper functions*/
 void prompt(void);
 char **sp_string(char *string, char *del);
@@ -13,7 +18,7 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *string, char *stradd);
 char *_strdup(const char *str);
 int _strlen(char *str);
-
+int child(char **array);
 /*free functions*/
 void free_arraybid(char **array);
 
