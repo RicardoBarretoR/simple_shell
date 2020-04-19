@@ -18,8 +18,13 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *string, char *stradd);
 char *_strdup(const char *str);
 int _strlen(char *str);
-int child(char **array);
+int child(char **array, char *av[], int cont);
 /*free functions*/
 void free_arraybid(char **array);
 
+/*Errors*/
+void print_errors(char **array, char *av[], int cont, int num);
+int print_integer(int n);
+int recursion_int(int n, int cont);
+int _putchar(char c);
 #endif
