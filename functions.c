@@ -76,32 +76,23 @@ char **sp_string(char *string, char *del)
 {
 	char **tokens;
 	/*char string[] = "Hola como";*/
-	char *scopy = NULL;
-	char *tokcont, *tok;
-	int lentok = 0, i = 0, nwords = 0;
+	char *tok;
+	int i = 0;
 
-	/*copying the original string to scopy*/
-	scopy = _strdup(string);
-	/*Conteo de palabras*/
-	tokcont = strtok(scopy, del);
-	while (tokcont != NULL)
-	{
-		nwords++;
-		tokcont = strtok(NULL, del);
-	}
-	free(scopy); /*leak # 1*/
-	/*printf("nwords = %d", nwords);*/
 	/*Crear array doble con malloc*/
-	tok = strtok(string, del); /*primer token del string*/
-	tokens = (char **) malloc(sizeof(char *) * (nwords + 1));
-	for (i = 0; i < nwords; i++)
+	tokens = (char **) malloc(sizeof(char *) * 1024);
+	if (tokens == NULL)
 	{
-		lentok = 0;
-		while (tok[lentok] != '\0') /*longitud del token*/
-			lentok++;
+		/*Print error for malloc*/
+		return (NULL);
+	}
+	tok = strtok(string, del); /*primer token del string*/
+	while (tok != NULL)
+	{
 		/*crear columnas*/
-		tokens[i] = _strdup(tok);
+		tokens[i] = tok;
 		tok = strtok(NULL, del);
+		i++;
 	}
 	tokens[i] = NULL;
 	return (tokens);

@@ -17,13 +17,18 @@ int main(void)
 		/*add condition for enter*/
 		/*(tokens)split the line string*/
 		array = sp_string(line, " \n\t");
+		if (array == NULL)
+		{
+			/*print error with perror*/
+			return_status = EXIT_FAILURE;
+		}
 		i = 0;
 		while (array[i] != NULL)
 		{
-			printf("%s\n", array[i]);
+			printf("%s$\n", array[i]);
 			i++;
 		}
-		free_arraybid(array);
+		free(array);
 		fflush(stdin); /*cleaning the buffer*/
 		if (isatty(STDIN_FILENO))
 			prompt();
