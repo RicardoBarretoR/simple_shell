@@ -2,33 +2,37 @@
 /**
  *child - creates the child process
  *@array: array of argument strings passed to the new program
+ *@av: array arguments from main
+ *@cont: count number of times that program is called
  *Return: return the child's exit status.
  */
-int child(char **array)
+int child(char **array, char *av[], int cont)
 {
 	int  valu_sta, status;
-	const char * command;
 	struct stat buf;
-	pid_t child;
+	pid_t ch;
 
-	if (array == NULL)
+	if (array == NULL || array[0] == NULL)
 		return (EXIT_SUCCESS);
 
-	command = array[0];
-
-	if (stat(command, &buf) == -1)
-		return (127);
-
-	if (access(command, X_OK) == -1)
-		return (126);
-
-	child = fork();
-
-	if (child == 0)
+	if (stat(array[0], &buf) == -1)
 	{
-		valu_sta = execve(command, array, environ);
+		print_errors(array, av, cont, 127);
+		return (127);
 	}
-	else if (child > 0)
+	if (access(array[0], X_OK) == -1)
+	{
+		print_errors(array, av, cont, 126);
+		return (126);
+	}
+
+	ch = fork();
+
+	if (ch == 0)
+	{
+		valu_sta = execve(array[0], array, environ);
+	}
+	else
 	{
 		wait(&status);
 		valu_sta = WEXITSTATUS(status);
