@@ -73,8 +73,7 @@ int _atoi(char *s)
 	return (nu_i);
 }
 /**
- *_isdigit - function that checks for a digit 0 thr
-ough 9
+ *_isdigit - function that checks for a digit 0 through 9
  *@c: variable of a digit
  *Return: 1 - 0
  */
