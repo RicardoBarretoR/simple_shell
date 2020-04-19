@@ -14,15 +14,20 @@ int main(int ac __attribute__((unused)), char *av[])
 
 	if (isatty(STDIN_FILENO))
 		prompt();
+
 	while (getline(&line, &n, stdin) != EOF)
 	{
 		/*add condition for enter*/
 		/*(tokens)split the line string*/
 		array = sp_string(line, " \n\t");
-		if (array == NULL)
+		if (array == NULL || array[0] == NULL)
 		{
 			/*print error with perror*/
+			free(array);
 			ret_status = EXIT_FAILURE;
+			cont++;
+			if (isatty(STDIN_FILENO))
+				prompt();
 			continue;
 		}
 		if (_strcmp(array[0], "exit") == 0)
