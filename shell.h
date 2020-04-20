@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <signal.h>
 /*extern enviroment variable*/
 extern char **environ;
 /*Helper functions*/
@@ -29,6 +30,8 @@ int print_env(void);
 int _atoi(char *s);
 int _isdigit(int c);
 int exit_cmd(char **array, char *av[], char *line, int cont, int ret_status);
+
+void manage_signal(int num_s __attribute__((unused)));
 
 /*Errors*/
 void print_errors(char **array, char *av[], int cont, int num);
