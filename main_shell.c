@@ -12,10 +12,13 @@ int main(int ac __attribute__((unused)), char *av[])
 	size_t n = 0;
 	int cnt = 1;
 
-	if (isatty(STDIN_FILENO))
-		prompt();
-	while (getline(&line, &n, stdin) != EOF)
+	while (1)
 	{
+		signal(SIGINT, manage_signal);
+		if (isatty(STDIN_FILENO))
+			prompt();
+		if (getline(&line, &n, stdin) == EOF)
+			break;
 		array = sp_string(line, " \n\t");
 		if (array == NULL || array[0] == NULL)
 		{
@@ -23,8 +26,6 @@ int main(int ac __attribute__((unused)), char *av[])
 			free(array);
 			ret_status = EXIT_FAILURE;
 			cnt++;
-			if (isatty(STDIN_FILENO))
-				prompt();
 			continue;
 		}
 		if (_strcmp(array[0], "exit") == 0)
@@ -33,8 +34,7 @@ int main(int ac __attribute__((unused)), char *av[])
 		{
 			ret_status = print_env();
 			free(array);
-			if (isatty(STDIN_FILENO))
-				prompt();
+			cnt++;
 			continue;
 		}
 		ret_status = child(array, av, cnt);
@@ -42,8 +42,6 @@ int main(int ac __attribute__((unused)), char *av[])
 		array = NULL;
 		fflush(stdin); /*cleaning the buffer*/
 		cnt++;  /*counter*/
-		if (isatty(STDIN_FILENO))
-			prompt();
 	}
 	free(line);
 	return (ret_status);
