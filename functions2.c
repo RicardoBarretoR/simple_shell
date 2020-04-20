@@ -88,3 +88,13 @@ int _isdigit(int c)
 		return (0);
 	}
 }
+/**
+ * manage_signal - function to manage the signal CTRL + C
+ * @num_s: number for the signal number
+ * Return: Nothing
+ */
+void manage_signal(int num_s __attribute__((unused)))
+{
+	_putchar('\n');
+	prompt();
+}
