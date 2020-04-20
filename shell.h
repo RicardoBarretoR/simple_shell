@@ -21,6 +21,10 @@ int _strlen(char *str);
 int child(char **array, char *av[], int cont);
 /*free functions*/
 void free_arraybid(char **array);
+
+/*environment*/
+int print_env(void);
+
 /*Exit*/
 int _atoi(char *s);
 int _isdigit(int c);
