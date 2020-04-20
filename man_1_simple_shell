@@ -31,21 +31,25 @@ Prints the current environment.
 .SH EXAMPLES INTERACTIVE MODE
 .TP
 Show the content of a file text.txt
-.B $ cat text.txt
+.B $ /bin/cat text.txt
 .TP
 Show the content of the current directory
-.B $ ls
+.B $ /bin/ls
 .TP
 Usign flags with ls command, -l shows long files and riectories in long format, -a all the directories that start with .
-.B $ ls -l -a
+.B $ /bin/ls -l -a
 .SH EXAMPLES NON-INTERACTIVE MODE
 .TP
 Show the content of the current directory
-.B $ echo "ls" | ./hsh
+.B $ echo "/bin/ls" | ./hsh
 .TP
 An error example is when you type ls command with a file that does not exist, In the following the error printed is ./hsh: 1: qwerty: not found
 .B $ echo "qwerty" | ./hsh
 .LP
+.SH EXIT STATUS
+Errors that are detected by the shell, such as a syntax error, will cause the shell to exit with a non-zero exit status.
+.SH BUGS
+sometimes the exit command should be executed twice to works fine, or type CTRL + D more than 2 times to exit.
 .SH SEE ALSO
 .I sh, fork, execve, exit, fflush, free, getline, isatty, stat, strtok, wait, waitpid
 .SH AUTHOR
