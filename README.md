@@ -47,19 +47,19 @@
 <hr/>
 <h3>Installation and use </h3>
 
-<li>Clone the repository with https into a directory on your terminal </li>
+<p>Clone the repository with https into a directory on your terminal </p>
 
 <img src="https://user-images.githubusercontent.com/55164863/79722644-09e0cc80-82aa-11ea-9e42-013915d1890f.PNG " style=" width:100px ; height:100px " />
 
-<li>Compile all files ending in .c and then run the program with "./hsh".
-This is how we enter our simple_shell </li>
+<p>Compile all files ending in .c and then run the program with "./hsh".
+This is how we enter our simple_shell </p>
 
 <img src= "https://user-images.githubusercontent.com/55164863/79722679-1a914280-82aa-11ea-9649-f08884760b9f.PNG " style=" width:100px ; height:100px " />
 
-<li>Now if we can work on it by typing commands like our example shown below : " /bin/ls " </li>
+<p>Now if we can work on it by typing commands like our example shown below : " /bin/ls " </p>
 
-<img src="https://user-images.githubusercontent.com/55164863/79722955-955a5d80-82aa-11ea-95d1-dbe2671ffae7.PNG " style=" width:100px ; height:100px " />
-
+<img src="https://user-images.githubusercontent.com/55164863/79726762-eec58b00-82b0-11ea-8adb-77959e96791b.PNG " style=" width:100px ; height:100px " />
+<hr>
 <h3>Authors</h3>
 
 <li> Diego Gomez - <a href="https://github.com/ikki2530">ikki2530</a></li>
